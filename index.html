@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PIXEL ARCADE V4.1</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="nav">
+  <a class="brand" href="#home">👾 PIXEL<span>ARCADE</span></a>
+
+  <nav>
+    <a href="#home">Accueil</a>
+    <a href="#games">Jeux</a>
+    <a href="#shop">Boutique</a>
+    <a href="#missions">Missions</a>
+    <a href="#trophies">Trophées</a>
+    <a href="#profile">Profil</a>
+  </nav>
+
+  <div class="userbar">
+    <span>⭐ <b id="topLevel">1</b></span>
+    <span>🪙 <b id="topCoins">500</b></span>
+    <a href="#profile" id="topAvatar">👾</a>
+    <button id="soundBtn" title="Sons">🔇</button>
+    <button id="musicBtn" title="Musique">♫</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ACCUEIL -->
+  <section class="page active" id="home">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">● WELCOME TO THE ARCADE</p>
+        <h1>PLAY.<br>WIN.<br><span>REPEAT.</span></h1>
+        <p>
+          Six mini-jeux, des niveaux, des trophées
+          et des récompenses. Entre dans ton arcade
+          et progresse jusqu'au niveau 100.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="#games">▶ JOUER</a>
+          <a class="btn" href="#shop">🛒 BOUTIQUE</a>
+          <a class="btn" href="#profile">MON PROFIL</a>
+        </div>
+
+        <div class="numbers">
+          <div><b>06</b><small>JEUX</small></div>
+          <div><b id="homeWins">0</b><small>VICTOIRES</small></div>
+          <div><b id="homePlays">0</b><small>PARTIES</small></div>
+        </div>
+
+        <div class="xpbox">
+          <div class="between">
+            <strong>⭐ Niveau <span id="homeLevel">1</span></strong>
+            <small id="xpText">0 / 200 XP</small>
+          </div>
+          <div class="track"><div id="xpFill"></div></div>
+        </div>
+      </div>
+
+      <div class="cabinet">
+        <div class="cabinet-title">PIXEL ARCADE</div>
+        <div class="cabinet-screen">
+          <div class="alien">👾</div>
+          <small>INSERT COIN</small>
+          <strong>PRESS START</strong>
+          <div>★★★★★</div>
+        </div>
+        <div class="cabinet-controls">
+          <span>✚</span>
+          <span>🔴 🟡 🔵</span>
+        </div>
+        <small>LEVEL UP YOUR GAME</small>
+      </div>
+    </div>
+
+    <h2>EXPLORE <span>THE ARCADE</span></h2>
+    <div class="grid games" id="homeGames"></div>
+  </section>
+
+  <!-- CATALOGUE -->
+  <section class="page" id="games">
+    <div class="heading">
+      <p class="eyebrow">CHOOSE YOUR CHALLENGE</p>
+      <h1>THE <span>ARCADE.</span></h1>
+      <p>Choisis ton mini-jeu et accumule des Pixel Coins.</p>
+    </div>
+    <div class="grid games" id="allGames"></div>
+  </section>
+
+  <!-- MEMORY FLIP -->
+  <section class="page" id="memory">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🃏 MEMORY <span>FLIP</span></h1>
+    <p>Retrouve les huit paires !</p>
+
+    <div class="game-layout">
+      <div class="panel">
+        <div class="scorebar">
+          <span>COUPS <b id="memMoves">0</b></span>
+          <span>TEMPS <b id="memTime">00:00</b></span>
+          <span>PAIRES <b id="memPairs">0/8</b></span>
+        </div>
+
+        <div class="memory-grid" id="memoryBoard"></div>
+
+        <p id="memMsg" class="hint">
+          Retourne deux cartes.
+        </p>
+
+        <button class="btn primary" id="memReset">
+          ↻ RECOMMENCER
+        </button>
+      </div>
+
+      <aside class="panel">
+        <h3>🧠 VISION ÉCLAIR</h3>
+        <p>Dévoile les cartes pendant 3 secondes.</p>
+        <button class="btn booster" data-use="memory">
+          UTILISER (<span data-stock="memory">0</span>)
+        </button>
+        <p class="hint">Victoire : +100 🪙 et +60 XP</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- LUCKY BOX -->
+  <section class="page" id="lucky">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🎁 LUCKY <span>BOX</span></h1>
+    <p>Trois coffres, un trésor. Mise fictive : 20 coins.</p>
+
+    <div class="game-layout">
+      <div class="panel">
+        <div class="chests" id="chests">
+          <button data-chest="0">
+            🎁<small>COFFRE 1</small>
+          </button>
+          <button data-chest="1">
+            🎁<small>COFFRE 2</small>
+          </button>
+          <button data-chest="2">
+            🎁<small>COFFRE 3</small>
+          </button>
+        </div>
+
+        <p id="luckyMsg" class="hint">
+          Choisis un coffre.
+        </p>
+
+        <button class="btn primary" id="luckyReset">
+          ↻ NOUVELLE MANCHE
+        </button>
+      </div>
+
+      <aside class="panel">
+        <h3>🔎 DÉTECTEUR</h3>
+        <p>Élimine un coffre perdant avant ton choix.</p>
+        <button class="btn booster" data-use="lucky">
+          UTILISER (<span data-stock="lucky">0</span>)
+        </button>
+        <p class="hint">Jackpot : +60 🪙 et +40 XP</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- TARGET RUSH -->
+  <section class="page" id="target">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🎯 TARGET <span>RUSH</span></h1>
+
+    <p>
+      Touche un maximum de cibles en 30 secondes.
+      Attention, elles changent de place !
+    </p>
+
+    <div class="game-layout">
+      <div class="panel">
+        <div class="scorebar">
+          <span>SCORE <b id="targetScore">0</b></span>
+          <span>TEMPS <b id="targetTime">30</b></span>
+          <span>RECORD <b id="targetBest">0</b></span>
+        </div>
+
+        <div class="arena" id="arena">
+          <button id="targetDot"
+            aria-label="Toucher la cible"></button>
+
+          <div class="arena-overlay" id="targetOverlay">
+            <h2>READY?</h2>
+            <p>1,5 seconde maximum par cible !</p>
+            <button class="btn primary" id="targetStart">
+              ▶ COMMENCER
+            </button>
+          </div>
+        </div>
+
+        <p class="hint">
+          Touché : +1 point · Raté : nouvelle cible
+          · Après 1,5 s : nouvelle cible.
+        </p>
+      </div>
+
+      <aside class="panel">
+        <h3>⏱️ TEMPS BONUS</h3>
+        <p>Ajoute 10 secondes pendant ta partie.</p>
+
+        <button class="btn booster" data-use="target">
+          UTILISER (<span data-stock="target">0</span>)
+        </button>
+
+        <p class="hint">
+          15 points : +100 🪙 et +60 XP
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- PIXEL QUIZ -->
+  <section class="page" id="quiz">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🧠 PIXEL <span>QUIZ</span></h1>
+    <p>10 questions pour prouver ta culture gaming.</p>
+
+    <div class="game-layout">
+      <div class="panel quiz-panel">
+        <div class="scorebar">
+          <span id="quizProgress">QUESTION 1/10</span>
+          <span id="quizScore">SCORE 0</span>
+        </div>
+
+        <div class="quiz-icon" id="quizIcon">🎮</div>
+        <h2 id="quizQuestion"></h2>
+
+        <div class="answers" id="quizAnswers"></div>
+        <p id="quizMsg" class="hint"></p>
+
+        <button class="btn primary" id="quizNext" disabled>
+          QUESTION SUIVANTE →
+        </button>
+      </div>
+
+      <aside class="panel">
+        <h3>💡 50 / 50</h3>
+        <p>Supprime deux mauvaises réponses.</p>
+
+        <button class="btn booster" data-use="quiz">
+          UTILISER (<span data-stock="quiz">0</span>)
+        </button>
+
+        <p class="hint">
+          7 bonnes réponses : +100 🪙
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- NEON SNAKE -->
+  <section class="page" id="snake">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🐍 NEON <span>SNAKE</span></h1>
+
+    <p>
+      Ramasse les pommes. Contrôle avec les flèches
+      ou ZQSD.
+    </p>
+
+    <div class="game-layout">
+      <div class="panel">
+        <div class="scorebar">
+          <span>SCORE <b id="snakeScore">0</b></span>
+          <span>RECORD <b id="snakeBest">0</b></span>
+        </div>
+
+        <canvas id="snakeCanvas"
+          width="400" height="400"></canvas>
+
+        <div class="center">
+          <button class="btn primary" id="snakeStart">
+            ▶ JOUER / REJOUER
+          </button>
+        </div>
+
+        <div class="direction-pad">
+          <button data-direction="up">↑</button>
+          <div>
+            <button data-direction="left">←</button>
+            <button data-direction="down">↓</button>
+            <button data-direction="right">→</button>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h3>🍎 NEON SNAKE</h3>
+        <p>
+          Évite les murs et ta propre queue.
+          Chaque pomme rapporte 10 points.
+        </p>
+        <p class="hint">
+          3 pommes : +50 coins · 30 XP
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CYBER PONG -->
+  <section class="page" id="pong">
+    <a class="back" href="#games">← RETOUR AUX JEUX</a>
+    <h1>🏓 CYBER <span>PONG</span></h1>
+
+    <p>
+      Affronte l'ordinateur.
+      Le premier à cinq points remporte la partie.
+    </p>
+
+    <div class="game-layout">
+      <div class="panel">
+        <div class="scorebar">
+          <span>TOI <b id="pongPlayer">0</b></span>
+          <span>ORDINATEUR <b id="pongBot">0</b></span>
+        </div>
+
+        <canvas id="pongCanvas"
+          width="600" height="350"></canvas>
+
+        <p class="hint">
+          Déplace la souris sur le terrain ou utilise ↑ / ↓.
+        </p>
+
+        <!-- NOUVEAU : DIFFICULTÉ -->
+        <div class="pong-difficulty">
+          <label for="pongDifficulty">
+            DIFFICULTÉ DE L'ADVERSAIRE
+          </label>
+
+          <select id="pongDifficulty">
+            <option value="easy">🟢 Facile</option>
+            <option value="normal" selected>🟡 Normal</option>
+            <option value="hard">🔴 Difficile</option>
+          </select>
+        </div>
+
+        <div class="center">
+          <button class="btn primary" id="pongStart">
+            ▶ JOUER / REJOUER
+          </button>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <h3>🏆 CYBER PONG</h3>
+
+        <p>
+          Renvoie la balle avec ta raquette.
+          L'adversaire s'adapte à la difficulté,
+          mais peut aussi rater la balle.
+        </p>
+
+        <p class="hint">
+          Victoire : +100 coins · 60 XP
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- BOUTIQUE -->
+  <section class="page" id="shop">
+    <div class="heading">
+      <p class="eyebrow">SPEND YOUR COINS</p>
+      <h1>POWER-UP <span>SHOP.</span></h1>
+
+      <p>
+        Achète des bonus, avatars rares, cadres et
+        thèmes avec tes crédits fictifs.
+      </p>
+    </div>
+
+    <div class="panel wallet">
+      🪙 <strong id="shopCoins">500</strong> PIXEL COINS
+    </div>
+
+    <h2>BONUS DE JEUX</h2>
+    <div class="grid shop-grid" id="boostShop"></div>
+
+    <h2>COSMÉTIQUES</h2>
+    <div class="grid shop-grid" id="cosmeticShop"></div>
+  </section>
+
+  <!-- MISSIONS -->
+  <section class="page" id="missions">
+    <div class="heading">
+      <p class="eyebrow">DAILY QUESTS</p>
+      <h1>MISSIONS <span>DU JOUR.</span></h1>
+
+      <p>
+        Trois missions renouvelées chaque jour,
+        avec des récompenses à réclamer.
+      </p>
+    </div>
+
+    <div id="missionsList"
+      class="grid mission-grid"></div>
+  </section>
+
+  <!-- TROPHÉES -->
+  <section class="page" id="trophies">
+    <div class="heading">
+      <p class="eyebrow">ACHIEVEMENTS</p>
+      <h1>TES <span>TROPHÉES.</span></h1>
+
+      <p>
+        Complète les défis pour gagner de l'XP
+        et des Pixel Coins.
+      </p>
+    </div>
+
+    <div class="grid trophies-grid"
+      id="trophiesList"></div>
+  </section>
+
+  <!-- PROFIL -->
+  <section class="page" id="profile">
+    <div class="heading">
+      <p class="eyebrow">YOUR GAMING JOURNEY</p>
+      <h1>PLAYER <span>PROFILE.</span></h1>
+
+      <p>
+        Pseudo, avatar, cosmétiques,
+        progression et statistiques.
+      </p>
+    </div>
+
+    <div class="panel profile-head">
+      <div class="profile-portrait"
+        id="profileAvatar">👾</div>
+
+      <div>
+        <p class="eyebrow">ARCADE MEMBER</p>
+        <h2 id="profileName">PLAYER 01</h2>
+        <p>⭐ Niveau <b id="profileLevel">1</b></p>
+      </div>
+
+      <strong class="profile-money">
+        🪙 <span id="profileCoins">500</span>
+      </strong>
+    </div>
+
+    <div class="grid stats-grid">
+      <div class="panel">
+        🎮<b id="profilePlays">0</b>
+        <small>PARTIES</small>
+      </div>
+
+      <div class="panel">
+        🏆<b id="profileWins">0</b>
+        <small>VICTOIRES</small>
+      </div>
+
+      <div class="panel">
+        🎯<b id="profileTarget">0</b>
+        <small>RECORD TARGET</small>
+      </div>
+
+      <div class="panel">
+        🧠<b id="profileQuiz">0/10</b>
+        <small>RECORD QUIZ</small>
+      </div>
+    </div>
+
+    <div class="panel profile-settings">
+      <h2>PERSONNALISATION</h2>
+
+      <form id="nameForm">
+        <label for="nameInput">
+          Ton pseudo (2 à 18 caractères)
+        </label>
+
+        <div class="actions">
+          <input id="nameInput"
+            minlength="2" maxlength="18" required>
+
+          <button class="btn primary">
+            ENREGISTRER
+          </button>
+        </div>
+      </form>
+
+      <h3>Choisis ton avatar</h3>
+      <div class="avatar-grid" id="avatarGrid"></div>
+
+      <h3>Cadre de profil</h3>
+      <div class="choices" id="frameChoices"></div>
+
+      <h3>Couleur du site</h3>
+      <div class="choices" id="themeChoices"></div>
+
+      <div class="xpbox">
+        <div class="between">
+          <strong>⭐ Progression</strong>
+          <span id="profileXPText"></span>
+        </div>
+        <div class="track">
+          <div id="profileXPFill"></div>
+        </div>
+      </div>
+
+      <h3>Ton inventaire</h3>
+      <div id="inventory"></div>
+
+      <div class="actions">
+        <button class="btn" id="dailyGift">
+          🎁 CADEAU +100 🪙
+        </button>
+
+        <button class="btn" id="resetProfile">
+          RÉINITIALISER LES DONNÉES
+        </button>
+      </div>
+
+      <p id="giftInfo" class="hint"></p>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" role="status"
+  aria-live="polite"></div>
+
+<footer>
+  👾 PIXEL<span>ARCADE</span>
+  <small>
+    © 2026 — HTML • CSS • JAVASCRIPT
+  </small>
+</footer>
+
+</body>
+</html>

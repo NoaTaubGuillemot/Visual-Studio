@@ -1,0 +1,58 @@
+1. Les mots utilisés en HTML
+
+
+
+Terme	: Explication simple
+Balise	: Élément qui indique au navigateur ce qu'il doit afficher, comme un titre ou un bouton.
+<head>	: Partie contenant les informations générales de la page, comme son titre et les liens vers les autres fichiers.
+<body>	: Partie qui contient les éléments visibles du site.
+<div>	: Bloc utilisé pour regrouper plusieurs éléments et organiser la page.
+<button>	: Élément qui crée un bouton cliquable.
+<section>	: Partie du site qui regroupe un contenu précis, comme un mini-jeu ou le profil.
+class	: Nom donné à un ou plusieurs éléments pour leur appliquer le même style.
+id	: Nom unique qui permet de retrouver un élément précis dans le code.
+Attribut	: Information ajoutée à une balise pour préciser son rôle ou son fonctionnement.
+
+
+3. Les mots utilisés en CSS
+
+
+Terme	: Explication simple
+Style	: Apparence visuelle d'un élément : couleur, forme, taille, police…
+Sélecteur	: Élément du code CSS qui indique quelle partie du site on souhaite modifier.
+background	: Définit la couleur ou l'image de fond d'un élément.
+color	: Permet de changer la couleur du texte.
+font-size	: Définit la taille du texte.
+padding	: Espace entre le contenu d'un élément et ses bords.
+margin	: Espace autour d'un élément, pour le séparer des autres.
+display	: Permet de choisir comment un élément apparaît et s'organise dans la page.
+grid	: Système qui permet de placer des éléments en lignes et en colonnes.
+flex	: Système qui facilite l'alignement et le placement des éléments.
+:hover	: Permet de modifier l'apparence d'un élément quand la souris passe dessus.
+@keyframes	: Permet de définir les différentes étapes d'une animation.
+Responsive	: Se dit d'un site qui s'adapte aux différentes tailles d'écran, comme un ordinateur ou un téléphone.
+
+
+
+4. Les mots utilisés en JavaScript
+
+
+
+Terme	: Explication simple
+Variable	: Élément qui sert à conserver une information, comme le score d'un joueur.
+let	: Permet de créer une variable dont la valeur peut changer.
+const	: Permet de déclarer une variable qu'on ne peut pas réassigner.
+Fonction (function)	: Ensemble d'instructions qui réalise une action précise lorsqu'on l'utilise.
+Condition (if)	: Permet d'effectuer une action uniquement lorsqu'une condition est respectée.
+Boucle (for)	: Permet de répéter plusieurs fois une action.
+array (tableau)	: Liste qui permet de regrouper plusieurs informations.
+object (objet)	: Ensemble d'informations regroupées sous un même nom.
+Événement	: Action détectée par le site, comme un clic ou une touche du clavier.
+addEventListener	: Permet de détecter une action de l'utilisateur et d'y réagir.
+Math.random()	: Permet de générer un nombre au hasard, par exemple pour choisir le coffre gagnant.
+setInterval()	: Permet de répéter une action à intervalles réguliers, comme un chronomètre.
+setTimeout()	: Permet de déclencher une action après un certain temps.
+localStorage	: Permet d'enregistrer des données dans le navigateur pour les retrouver plus tard.
+JSON	: Format utilisé pour organiser et enregistrer des données.
+canvas	: Zone de la page dans laquelle JavaScript peut dessiner, notamment pour Snake et Pong.
+requestAnimationFrame()	: Permet de mettre à jour les images d'une animation de façon fluide.
